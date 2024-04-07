@@ -1,0 +1,16 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: sc-pod
+spec:
+  containers:
+    - name: redis-container-1
+      image: mongo
+    - name: redis-container-2
+      image: redis
+      securityContext:
+        runAsUser: 1000    # Overrides pod level securityContext
+        capabilities:
+          add: ["MAC_ADMIN"]
+  securityContext:
+    runAsUser: 1050

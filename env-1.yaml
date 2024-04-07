@@ -1,0 +1,14 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: env-pod-1
+  labels:
+    type: env
+spec:
+  containers:
+    - name: env-nginx-container
+      image: nginx
+      command: ["env"]
+      env:
+        - name: NEW_ENV_VAR
+          value: new_env_value

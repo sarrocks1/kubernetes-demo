@@ -1,0 +1,14 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: liveness-pod
+spec:
+  containers:
+    - name: redis
+      image: redis
+      livenessProbe:
+        exec:
+          command:
+            - echo
+            - Hello my name
+        failureThreshold: 8

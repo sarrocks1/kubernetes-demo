@@ -1,0 +1,20 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: deployment-1
+  labels:
+    tier: deployment-cat-1
+spec:
+  template:
+    metadata:
+      name: deploy-pod
+      labels:
+        tier: cat-1
+    spec:
+      containers:
+        - name: redis-container
+          image: redis
+  replicas: 3
+  selector:
+    matchLabels:
+      tier: cat-1

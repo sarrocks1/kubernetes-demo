@@ -1,0 +1,17 @@
+apiVersion: batch/v1
+kind: CronJob
+metadata:
+  name: cron-job
+spec:
+  schedule: "*/2 * * * *"
+  jobTemplate:
+    spec:
+      completions: 2
+      parallelism: 2
+      template:
+        spec:
+          containers:
+            - name: ubuntu
+              image: ubuntu
+              command: ["expr","4","-","1"]
+          restartPolicy: Never

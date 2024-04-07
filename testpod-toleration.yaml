@@ -1,0 +1,15 @@
+#To test this, create taint on existing node with `k taint nodes node-name key=value:NoSchedule` command
+apiVersion: v1
+kind: Pod
+metadata: 
+  name: toleration-pod
+spec:
+  containers:
+    - image: redis
+      name: redis-container
+  tolerations:
+    - key: "color"
+      operator: "Equal"
+      value: "blue"
+      effect: "NoSchedule"
+
